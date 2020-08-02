@@ -18,6 +18,13 @@ namespace OuterWildsHelper
 
         private void PauseMenuOpen()
         {
+            if (TimeLoop.GetLoopCount() < 2)
+            {
+                // don't display the loop time on the first loop to not spoil new players
+                // loop count is 1 on the very first loop
+                return;
+            }
+
             var part1 = Mathf.Floor(TimeLoop.GetSecondsRemaining() / 60f);
             var part2 = Mathf.Round(TimeLoop.GetSecondsRemaining() % 60f);
 
